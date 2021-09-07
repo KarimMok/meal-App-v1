@@ -3,6 +3,11 @@ import 'package:mealapp/dummy_data.dart';
 import 'package:mealapp/widget/categorie.dart';
 
 class CategoriesScreen extends StatelessWidget {
+  
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,8 +21,8 @@ class CategoriesScreen extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 205,
               childAspectRatio: 3 / 2,
-              crossAxisSpacing: 18,
-              mainAxisSpacing: 18)),
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20)),
     );
   }
 }
