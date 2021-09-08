@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/screens/categoryMealScreen.dart';
 import 'package:mealapp/screens/categoryScreen.dart';
+import 'package:mealapp/screens/detailsOfMeal.dart';
 
 void main()=>  runApp(MyApp());
 
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(context)=>CategoriesScreen(),
-        CategoryMealScreen.routeName:(context)=>CategoryMealScreen()
+        CategoryMealScreen.routeName:(context)=>CategoryMealScreen(),
+        MealsDetail.routeName:(context)=>MealsDetail(),
 
       },
 
@@ -44,22 +46,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+// class MyHomePage extends StatefulWidget {
   
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
+// class _MyHomePageState extends State<MyHomePage> {
   
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Meal App"),
-      ),
-      body:null,
-       // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Meal App"),
+//       ),
+//       body:,
+//        // This trailing comma makes auto-formatting nicer for build methods.
+//     );
+//   }
+// }

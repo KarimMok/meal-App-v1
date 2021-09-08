@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/module/meal.dart';
+import 'package:mealapp/screens/detailsOfMeal.dart';
 
 class MealItem extends StatelessWidget {
+  final String? id;
   final String? imageUrl;
   final String? title;
   final int? duration;
@@ -9,7 +11,8 @@ class MealItem extends StatelessWidget {
   final Affordability? affordability;
 
   const MealItem(
-      {@required this.imageUrl,
+      {@required this.id,
+      @required this.imageUrl,
       @required this.title,
       @required this.duration,
       @required this.complexity,
@@ -62,10 +65,16 @@ class MealItem extends StatelessWidget {
       );
   }
 
+  //switsh into meal Details we need ID arguments to make différences
+  void selectedMeal(BuildContext ctx) {
+    Navigator.pushNamed(ctx, MealsDetail.routeName,arguments: id);
+  }
+
   @override
   Widget build(BuildContext context) {
     print(complexity.toString());
     return InkWell(
+      onTap: () => selectedMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
@@ -117,15 +126,17 @@ class MealItem extends StatelessWidget {
                     Icon(Icons.work),
                     SizedBox(width: 6),
                     Text(
-                      complxityText, // from the get methode 
+                      complxityText, // from the get methode
                       style: TextStyle(color: Colors.black),
                     ),
                   ]),
                   Row(children: [
                     Icon(Icons.attach_money),
                     SizedBox(width: 6),
-                    Text(affordabilityText,style: TextStyle(color: Colors.black),
-                    ) ,
+                    Text(
+                      affordabilityText,
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ]),
                 ],
               ),
