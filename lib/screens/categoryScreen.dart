@@ -11,7 +11,7 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title: Text("Meal app"),),
+      //appBar:AppBar(title: Text("Meal app"),),
       body: GridView(
         padding: EdgeInsets.all(12),
           children: DUMMY_CATEGORIES.map((catData)=>
