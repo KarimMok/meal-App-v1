@@ -79,7 +79,7 @@ class _App extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Meal',
+      title: 'best food',
       theme: ThemeData(
           //the default color en the app
           primarySwatch: Colors.pink,
