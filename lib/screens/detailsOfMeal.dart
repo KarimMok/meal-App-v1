@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/dummy_data.dart';
 
+// ignore: must_be_immutable
 class MealsDetail extends StatelessWidget {
   static final routeName = '/MealDetails';
+  Function toggleFavorite;
+  Function isfavorit;
+  MealsDetail(this.toggleFavorite,this.isfavorit);
 
   Widget buildTitle(BuildContext ctx, String title) {
     return Container(
@@ -122,10 +126,14 @@ class MealsDetail extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pop(meailId);
-        },
-        child: Icon(Icons.delete),
+        onPressed:()=> toggleFavorite(meailId),
+
+
+        // onPressed: () {
+        //   Navigator.of(context).pop(meailId);
+        // },
+        child: Icon(
+          isfavorit(meailId)?Icons.star:Icons.star_border ),
       ),
     );
   }

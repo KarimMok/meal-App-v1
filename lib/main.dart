@@ -21,6 +21,34 @@ class _App extends State<MyApp> {
     'vegan': false,
     'vegetarien': false
   };
+  List<Meal> _availbleMeals = DUMMY_MEALS;
+  List<Meal> _favoriteMeal = [];
+
+  //verify if the the existe in favorite and deleted
+  void _toggleFavoriteMeal(String mealId) {
+    final indexmeal =
+        _favoriteMeal.indexWhere((element) => element.id == mealId);
+    // the meal existe // indexwhere return -1 if the condition false
+    if (indexmeal >= 0) {
+      setState(() {
+        _favoriteMeal.removeAt(indexmeal);
+      });
+    } else {
+      setState(() {
+        print('add');
+        _favoriteMeal
+            .add(DUMMY_MEALS.firstWhere((element) => element.id == mealId));
+      });
+    }
+  }
+
+  //------------------------------------
+  //if the meal existe in favorite to change the icon type
+  bool _isFavorite(String mealId) {
+    return _favoriteMeal.any((element) => mealId == element.id);
+  }
+
+//--------------------------------------------------------
   // fitring the list of meal
   void _setFilter(Map<String, bool> _filterData) {
     setState(() {
@@ -47,13 +75,6 @@ class _App extends State<MyApp> {
     });
   }
 
-  List<Meal> _availbleMeals = DUMMY_MEALS;
-  @override
-  void initState() {
-    _availbleMeals = DUMMY_MEALS;
-    super.initState();
-  }
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -77,10 +98,11 @@ class _App extends State<MyApp> {
       //home: CategoriesScreen(),
       initialRoute: '/',
       routes: {
-        '/': (context) => TabScreen(),
+        '/': (context) => TabScreen(_favoriteMeal),
         CategoryMealScreen.routeName: (context) =>
             CategoryMealScreen(_availbleMeals),
-        MealsDetail.routeName: (context) => MealsDetail(),
+        MealsDetail.routeName: (context) =>
+            MealsDetail(_toggleFavoriteMeal, _isFavorite),
         Filtering.routeName: (context) => Filtering(_filter, _setFilter),
       },
 

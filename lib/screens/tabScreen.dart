@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:mealapp/module/meal.dart';
 import 'package:mealapp/screens/categoryScreen.dart';
 import 'package:mealapp/screens/favorite.dart';
 import 'package:mealapp/widget/drawer.dart';
 
+// ignore: must_be_immutable
 class TabScreen extends StatefulWidget {
+  final List<Meal> froriteMeal;
+  TabScreen(this.froriteMeal);
+
   @override
   _TabScreen_state createState() => _TabScreen_state();
 }
 
 // ignore: camel_case_types
 class _TabScreen_state extends State<TabScreen> {
+   List<Map> page =[] ;
+
+  @override
+  void initState() {
+    page = [
+      {'page': CategoriesScreen(), 'title': 'Categories Meal'},
+      {'page': Favorite(widget.froriteMeal), 'title': 'Favorite'}
+    ];
+    super.initState();
+  }
+
   int _selectedItem = 0;
-  List<Map> page = [
-    {'page': CategoriesScreen(), 'title': 'Categories Meal'},
-    {'page': Favorite(), 'title': 'Favorite'}
-  ];
 
   void _selectedPage(value) {
     setState(() {
@@ -31,14 +43,14 @@ class _TabScreen_state extends State<TabScreen> {
       body: page[_selectedItem]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectedPage,
-      //  backgroundColor: Colors.indigo[900],
+        //  backgroundColor: Colors.indigo[900],
         // to change the color we shoulddefine the current index
         selectedItemColor: Theme.of(context).accentColor,
         unselectedItemColor: Colors.white,
         currentIndex: _selectedItem,
         elevation: 8,
         type: BottomNavigationBarType.shifting,
-      
+
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
@@ -52,7 +64,7 @@ class _TabScreen_state extends State<TabScreen> {
           ),
         ],
       ),
-      drawer:MainDrawed(),
+      drawer: MainDrawed(),
     );
   }
 }

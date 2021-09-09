@@ -37,11 +37,11 @@ class _MealScreen extends State<CategoryMealScreen> {
   }
 
   // fuction for removin meal item the will pass from the constructor of mail details .
-  void _removeMeal(String itemId) {
-    setState(() {
-      categorieMeal.removeWhere((element) => element.id == itemId);
-    });
-  }
+  // void _removeMeal(String itemId) {
+  //   setState(() {
+  //     categorieMeal.removeWhere((element) => element.id == itemId);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _MealScreen extends State<CategoryMealScreen> {
             duration: categorieMeal[index].duration,
             complexity: categorieMeal[index].complexity,
             affordability: categorieMeal[index].affordability,
-            removItem: _removeMeal,
+           // removItem: _removeMeal,
           );
         },
         itemCount: categorieMeal.length,
