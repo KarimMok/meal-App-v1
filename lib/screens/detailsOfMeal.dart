@@ -38,15 +38,15 @@ class MealsDetail extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            // buil title widget function 
-            buildTitle(context,'Ingrediants'),
-        // ingrediant --------------------
+            // buil title widget function
+            buildTitle(context, 'Ingrediants'),
+            // ingrediant --------------------
             Container(
               decoration: BoxDecoration(
                   color: Colors.white,
                   //  border: Border.all(color:Colors.grey ),
                   borderRadius: BorderRadius.circular(15)),
-      
+
               // margin: EdgeInsets.all(15),
               padding: EdgeInsets.all(10),
               width: 300,
@@ -58,64 +58,74 @@ class MealsDetail extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     child: Text(
                       ' - ' + selectedMeal.ingredients![index],
-                      style: TextStyle(color: Colors.black,fontSize: 18),
+                      style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
                   ),
                 ),
                 itemCount: selectedMeal.ingredients!.length,
               ),
             ),
-            SizedBox(height: 15,),
-            Divider(color: Colors.brown,),
-            buildTitle(context,'Steps'),
+            SizedBox(
+              height: 15,
+            ),
+            Divider(
+              color: Colors.brown,
+            ),
+            buildTitle(context, 'Steps'),
 
-           // steps ----------------------
-           Container(
+            // steps ----------------------
+            Container(
               decoration: BoxDecoration(
                   color: Colors.white,
                   //  border: Border.all(color:Colors.grey ),
                   borderRadius: BorderRadius.circular(15)),
-      
+
               // margin: EdgeInsets.all(15),
               padding: EdgeInsets.all(6),
-              margin: EdgeInsets.symmetric(vertical:8),
+              margin: EdgeInsets.symmetric(vertical: 8),
               width: 300,
               height: 200,
               child: ListView.builder(
                 itemBuilder: (context, index) => Column(
                   children: [
                     ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: 2,horizontal: 10),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 2, horizontal: 10),
                       // color: Theme.of(context).accentColor,
                       // child: Padding(
                       //   padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                       leading: CircleAvatar(
-                        
-                        child: Text('${index+1}'),
+                        child: Text('${index + 1}'),
                         backgroundColor: Colors.purple[900],
-                        
                       ),
-                         title: Text(
-                          selectedMeal.steps![index],
-                          style: TextStyle(color: Colors.black,fontSize: 19),
-                        ),
+                      title: Text(
+                        selectedMeal.steps![index],
+                        style: TextStyle(color: Colors.black, fontSize: 19),
                       ),
-                      Divider(color: Colors.grey,)
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                    )
                   ],
                 ),
-               
                 itemCount: selectedMeal.steps!.length,
-                
               ),
-              
-             ),
-             // end of screen 
-           SizedBox(height: 15,),
-            Divider(color: Colors.brown,),
-            
-
+            ),
+            // end of screen
+            SizedBox(
+              height: 15,
+            ),
+            Divider(
+              color: Colors.brown,
+            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pop(meailId);
+        },
+        child: Icon(Icons.delete),
       ),
     );
   }

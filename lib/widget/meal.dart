@@ -9,6 +9,8 @@ class MealItem extends StatelessWidget {
   final int? duration;
   final Complexity? complexity;
   final Affordability? affordability;
+  //to remove the item
+  final Function? removItem;
 
   const MealItem(
       {@required this.id,
@@ -16,7 +18,9 @@ class MealItem extends StatelessWidget {
       @required this.title,
       @required this.duration,
       @required this.complexity,
-      @required this.affordability});
+      @required this.affordability,
+      @required this.removItem});
+
   // to convert the enum to String text
   String get complxityText {
     switch (complexity) {
@@ -67,7 +71,11 @@ class MealItem extends StatelessWidget {
 
   //switsh into meal Details we need ID arguments to make différences
   void selectedMeal(BuildContext ctx) {
-    Navigator.pushNamed(ctx, MealsDetail.routeName,arguments: id);
+    Navigator.pushNamed(ctx, MealsDetail.routeName, arguments: id)
+        .then((result) {
+      print(result); //value returned from the pop ()
+      if (result != null) removItem!(result);
+    });
   }
 
   @override

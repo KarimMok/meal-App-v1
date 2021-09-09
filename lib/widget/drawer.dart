@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/screens/filtring.dart';
 
+// ignore: must_be_immutable
 class MainDrawed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,11 +25,11 @@ class MainDrawed extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          buildListTile("Meal", Icons.restaurant,context),
+           buildListTile("Meal", Icons.restaurant, context),
           Divider(
             color: Colors.grey,
           ),
-          buildListTile("Filters", Icons.settings,context),
+          buildListTile("Filters", Icons.settings, context),
         ],
       ),
     );
@@ -38,13 +39,11 @@ class MainDrawed extends StatelessWidget {
     return ListTile(
       onTap: () {
         if (title == 'Filters') {
-          Navigator.pushNamed(ctx, Filtering.routeName);
-        }
-        else
-           Navigator.pushNamed(ctx, '/');
-       
-
+          Navigator.pushReplacementNamed(ctx, Filtering.routeName);
+        } else
+          Navigator.pushReplacementNamed(ctx, '/');
       },
+     // focusColor: color,
       leading: Icon(
         icon,
         size: 28,
